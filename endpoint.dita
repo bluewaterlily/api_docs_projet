@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="api-endpoints">
+    <title>API Endpoints</title>
+    <body>
+        <section id="get-all-orders">
+            <title>Get All Orders</title>
+            <p>
+                <b>Method:</b> GET
+                <b>URL:</b> <codeph>/orders</codeph>
+            </p>
+            <p>Returns a list of all orders.</p>
+            
+            <p><b>Response — 200 OK</b></p>
+            <codeblock outputclass="language-json">
+                [
+                {
+                "id": 67,
+                "customer": "Juan Caballo",
+                "status": "Processing"
+                }
+                ]
+            </codeblock>
+        </section>
+        <section id="create-order">
+            <title>Create Order</title>
+            <p>
+                <b>Method:</b> GET
+                <b>URL:</b> <codeph>/orders</codeph>
+            </p>
+            <p>Creates a new order.</p>
+            
+            <p><b>Request Body Fields</b></p>
+            <simpletable relcolwidth="1* 1* 1*">
+                <sthead>
+                    <stentry>Field</stentry>
+                    <stentry>Type</stentry>
+                    <stentry>Required</stentry>
+                </sthead>
+                <strow>
+                    <stentry><codeph>customer</codeph></stentry>
+                    <stentry>string</stentry>
+                    <stentry>true</stentry>
+                </strow>
+                <strow>
+                    <stentry><codeph>product</codeph></stentry>
+                    <stentry>string</stentry>
+                    <stentry>true</stentry>
+                </strow>
+                <strow>
+                    <stentry><codeph>quantity</codeph></stentry>
+                    <stentry>integer</stentry>
+                    <stentry>true</stentry>
+                </strow>
+            </simpletable>
+            
+            <p><b>Request Example</b></p>
+            <codeblock outputclass="language-json">
+                {
+                "customer": "Juan Caballo",
+                "product": "Laptop",
+                "quantity": 1
+                }
+            </codeblock>
+            
+            <p><b>Response — 201 Created</b></p>
+            <codeblock outputclass="language-json">
+                {
+                "id": 68,
+                "status": "Created"
+                }
+            </codeblock>
+        </section>
+        <section id="get-order-details">
+            <title>Get Order Details</title>
+            <p>
+                <b>Method:</b> GET
+                <b>URL:</b> <codeph>/orders/{id}</codeph>
+            </p>
+            <p>Returns details for a specific order.</p>
+            
+            <p><b>Path Parameters</b></p>
+            <simpletable relcolwidth="1* 1* 2*">
+                <sthead>
+                    <stentry>Parameter</stentry>
+                    <stentry>Type</stentry>
+                    <stentry>Description</stentry>
+                </sthead>
+                <strow>
+                    <stentry><codeph>id</codeph></stentry>
+                    <stentry>integer</stentry>
+                    <stentry>Unique order identifier.</stentry>
+                </strow>
+            </simpletable>
+            
+            <p><b>Response — 200 OK</b></p>
+            <codeblock outputclass="language-json">
+                {
+                "id": 67,
+                "customer": "Juan Caballo",
+                "product": "Laptop",
+                "quantity": 1,
+                "status": "Processing"
+                }
+            </codeblock>
+        </section>
+        
+    </body>
+</topic>
